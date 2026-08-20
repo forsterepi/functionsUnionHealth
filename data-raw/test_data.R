@@ -64,6 +64,7 @@ c_year <- data.frame(
 ## Generate country-level data ----
 d_countries <- simstudy::genData(10, def_countries) |>
   vctrs::vec_cbind(c_year)
+rm(def_countries, c_year)
 
 ## Define individual-level data ----
 def_indiv <- simstudy::defDataAdd(
@@ -111,6 +112,7 @@ test_data <- simstudy::genCluster(
   level1ID = "idperson"
 )
 test_data <- simstudy::addColumns(def_indiv, test_data)
+rm(d_countries, def_indiv)
 
 # Process initial dataset ------------------------------------------------
 
