@@ -1,19 +1,36 @@
 Package: functionsUnionHealth
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Functions for Projects Investigating Trade Unions and Health
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
+      "Felix", "Forster",
+      email = "forsterepi@gmail.com",
+      role = c("aut", "cre", "cph"),
+      comment = c(ORCID = "0000-0002-3670-9244")
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
+Description: Contains functions used in projects investigating the relation
+    between trade unions (trade union density, collective bargaining coverage,
+    trade union membership, trade union presence) as well as health and well-
+    being. These functions are used in repository "REPONAME" and have been 
+    extracted into a separate package so established workflows for testing and 
+    documentation can be used.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.0
+Imports: 
+    checkmate,
+    cli,
+    dirmult,
+    dplyr,
+    ordinal,
+    rlang,
+    simstudy,
+    vctrs
+Depends: 
+    R (>= 3.5)
