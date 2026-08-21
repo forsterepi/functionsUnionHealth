@@ -24,13 +24,18 @@ Suggests:
 Config/testthat/edition: 3
 Config/roxygen2/version: 8.1.0
 Imports: 
+    broom,
     checkmate,
     cli,
     dirmult,
     dplyr,
+    magrittr,
     ordinal,
+    purrr,
     rlang,
     simstudy,
+    stringi,
+    tibble,
     vctrs
 Depends: 
-    R (>= 3.5)
+    R (>= 4.1)
