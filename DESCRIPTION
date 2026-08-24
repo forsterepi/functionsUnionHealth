@@ -29,6 +29,8 @@ Imports:
     cli,
     dirmult,
     dplyr,
+    forcats,
+    ggplot2,
     magrittr,
     ordinal,
     plyr,
