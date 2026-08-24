@@ -13,7 +13,7 @@ coefs_clm(
 )
 }
 \arguments{
-\item{fit}{A fitted model object}
+\item{fit}{A model object fitted with `ordinal::clm()`}
 
 \item{expo_mean}{Mean of exposure (TUD or CBC) used for standardisation,
 i.e., tud_mean_srh, tud_mean_swl, cbc_mean_srh, or cbc_mean_swl, depending on
@@ -23,9 +23,13 @@ exposure and outcome}
 tud_sd_srh, tud_sd_swl, cbc_sd_srh, or cbc_sd_swl depending on exposure and
 outcome}
 
-\item{fixed_year}{x}
+\item{fixed_year}{A numeric vaector containing the years for which the
+exposure effect estimate is calculated. Values must be integerish numbers and
+between 1980 and 2025. Values must be listed in ascending order.}
 
-\item{fixed_expo_perc}{x}
+\item{fixed_expo_perc}{A numeric vector containing the exposure values for
+which the decades effect estimate is caluclated. Values are numeric and
+between 0 and 1. Values must be listed in ascending order.}
 }
 \value{
 A data.frame

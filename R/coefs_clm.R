@@ -1,14 +1,18 @@
 #' Extract coefficient tables for models with outc ~ expo*decades_since_start
 #'
-#' @param fit A fitted model object
+#' @param fit A model object fitted with `ordinal::clm()`
 #' @param expo_mean Mean of exposure (TUD or CBC) used for standardisation,
 #' i.e., tud_mean_srh, tud_mean_swl, cbc_mean_srh, or cbc_mean_swl, depending on
 #' exposure and outcome
 #' @param expo_sd SD of exposure (TUD or CBC) used for standardisation, i.e.,
 #' tud_sd_srh, tud_sd_swl, cbc_sd_srh, or cbc_sd_swl depending on exposure and
 #' outcome
-#' @param fixed_year x
-#' @param fixed_expo_perc x
+#' @param fixed_year A numeric vaector containing the years for which the
+#' exposure effect estimate is calculated. Values must be integerish numbers and
+#' between 1980 and 2025. Values must be listed in ascending order.
+#' @param fixed_expo_perc A numeric vector containing the exposure values for
+#' which the decades effect estimate is caluclated. Values are numeric and
+#' between 0 and 1. Values must be listed in ascending order.
 #'
 #' @returns A data.frame
 #' @export
@@ -41,7 +45,7 @@ coefs_clm <- function(
     checkmate::assert_class(fit, "clm", null.ok = FALSE),
     error = function(cnd) {
       cli::cli_abort(
-        "Argumnet `fit` must be an object created by `ordinal::clm()`.",
+        "Argument `fit` must be an object created by `ordinal::clm()`.",
         parent = NA
       )
     }

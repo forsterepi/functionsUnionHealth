@@ -31,11 +31,13 @@ Imports:
     dplyr,
     magrittr,
     ordinal,
+    plyr,
     purrr,
     rlang,
     simstudy,
     stringi,
     tibble,
+    tidyr,
     vctrs
 Depends: 
     R (>= 4.1)
