@@ -18,11 +18,11 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-Package `functionsUnionHealth` contains all functions created for project "REPONAME". The functions are extracted to a separate package in order to make use of the established testing and documentation infrastructure developed for R packages. Please refer to the Readme of "REPONAME" for details, which is another Github repository of user "forsterepi". 
+Package `functionsUnionHealth` contains all functions created for project "paper-union-wvs". The functions are extracted to a separate package in order to make use of the established testing and documentation infrastructure developed for R packages. Please refer to the README of "paper-union-wvs" for details, which is another Github repository of user "forsterepi". 
 
 ## Installation
 
-You can install the development version of `functionsUnionHealth` like so:
+You can install `functionsUnionHealth` like so:
 
 ```{r}
 #| eval: false

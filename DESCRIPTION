@@ -1,6 +1,6 @@
 Package: functionsUnionHealth
 Type: Package
-Title: Functions for Projects Investigating Trade Unions and Health
+Title: Functions for Project "paper-union-wvs"
 Version: 0.1.0
 Authors@R: c(
     person(
@@ -13,16 +13,16 @@ Authors@R: c(
 Description: Contains functions used in projects investigating the relation
     between trade unions (trade union density, collective bargaining coverage,
     trade union membership, trade union presence) as well as health and well-
-    being. These functions are used in repository "REPONAME" and have been 
-    extracted into a separate package so established workflows for testing and 
-    documentation can be used.
+    being. These functions are used in repository "paper-union-wvs" and have 
+    been extracted into a separate package so established workflows for testing 
+    and documentation can be used.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1
 Imports: 
     broom,
     checkmate,
