@@ -49,3 +49,40 @@ test_that("evaluate_clm() works", {
     )
   )
 })
+
+test_that("evaluate_clm() works without predictions", {
+  f <- ordinal::clm(
+    swl ~ tud * decades_since_start,
+    nominal = ~country,
+    data = test_data,
+    link = "logit"
+  )
+
+  tud_mean <- test_data$tud_original |> mean()
+  tud_sd <- test_data$tud_original |> sd()
+  input_fixed_expo_perc <- c(0.1, 0.5)
+  n_of_sample <- 3
+
+  out <- evaluate_clm(
+    fit = f,
+    n_sample = n_of_sample,
+    fixed_expo_perc = input_fixed_expo_perc,
+    data = test_data,
+    expo_mean = tud_mean,
+    expo_sd = tud_sd,
+    seed = 797179,
+    predict = FALSE
+  )
+
+  expect_equal(out$pred, NA)
+  expect_equal(out$fit, f)
+  expect_equal(out$nobs, nrow(f$model))
+  expect_equal(
+    out$coefs,
+    coefs_clm(
+      fit = f,
+      expo_mean = tud_mean,
+      expo_sd = tud_sd
+    )
+  )
+})

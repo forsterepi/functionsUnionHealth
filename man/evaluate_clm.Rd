@@ -11,7 +11,8 @@ evaluate_clm(
   data,
   expo_mean,
   expo_sd,
-  seed
+  seed,
+  predict = TRUE
 )
 }
 \arguments{
@@ -35,6 +36,9 @@ tud_sd_srh, tud_sd_swl, cbc_sd_srh, or cbc_sd_swl depending on exposure and
 outcome}
 
 \item{seed}{Random seed}
+
+\item{predict}{Boolean value, which indicates if predictions are calculated
+(default is TRUE)}
 }
 \value{
 A list with the fit and all evaluation objects

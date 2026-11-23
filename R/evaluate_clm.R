@@ -14,6 +14,8 @@
 #' tud_sd_srh, tud_sd_swl, cbc_sd_srh, or cbc_sd_swl depending on exposure and
 #' outcome
 #' @param seed Random seed
+#' @param predict Boolean value, which indicates if predictions are calculated
+#' (default is TRUE)
 #'
 #' @returns A list with the fit and all evaluation objects
 #' @export
@@ -44,7 +46,8 @@ evaluate_clm <- function(
   data,
   expo_mean,
   expo_sd,
-  seed
+  seed,
+  predict = TRUE
 ) {
   # Check input
   rlang::try_fetch(
@@ -107,6 +110,11 @@ evaluate_clm <- function(
     len = 1,
     null.ok = FALSE
   )
+  checkmate::assert_flag(
+    predict,
+    na.ok = FALSE,
+    null.ok = FALSE
+  )
   checkmate::assert_data_frame(data, null.ok = FALSE)
   rlang::try_fetch(
     {
@@ -136,39 +144,43 @@ evaluate_clm <- function(
     coefs_clm(expo_mean = expo_mean, expo_sd = expo_sd)
 
   # Predictions
-  ## Create newdata
-  newdata <- create_newdata(
-    fit = fit,
-    fixed_expo_perc = fixed_expo_perc,
-    expo_mean = expo_mean,
-    expo_sd = expo_sd
-  )
+  if (predict) {
+    ## Create newdata
+    newdata <- create_newdata(
+      fit = fit,
+      fixed_expo_perc = fixed_expo_perc,
+      expo_mean = expo_mean,
+      expo_sd = expo_sd
+    )
 
-  ## Get predictions
-  pred <- get_predictions(
-    fit = fit,
-    newdata = newdata
-  )
+    ## Get predictions
+    pred <- get_predictions(
+      fit = fit,
+      newdata = newdata
+    )
 
-  ## Draw samples
-  samples <- draw_samples(
-    fit = fit,
-    pred = pred,
-    n_sample = n_sample,
-    seed = seed
-  )
+    ## Draw samples
+    samples <- draw_samples(
+      fit = fit,
+      pred = pred,
+      n_sample = n_sample,
+      seed = seed
+    )
 
-  ## Summarise samples
-  summ <- summarise_samples(
-    fit = fit,
-    samples = samples
-  )
+    ## Summarise samples
+    summ <- summarise_samples(
+      fit = fit,
+      samples = samples
+    )
 
-  ## Combine samples
-  pred_results <- combine_summaries(
-    summ = summ,
-    data = data
-  )
+    ## Combine samples
+    pred_results <- combine_summaries(
+      summ = summ,
+      data = data
+    )
+  } else {
+    pred_results <- NA
+  }
 
   # Return
   list(
